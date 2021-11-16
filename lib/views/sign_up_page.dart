@@ -1,16 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    List images = ["f.png", "g.png", "t.png"];
+
     double w = MediaQuery
         .of(context)
         .size
@@ -31,10 +27,22 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                          "assets/images/loginimg.png"
+                          "assets/images/signup.png"
                       ),
                       fit: BoxFit.fill
                   )
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: h * 0.15,),
+                  const CircleAvatar(
+                    backgroundColor: Colors.lightBlueAccent,
+                    radius: 50,
+                    backgroundImage: AssetImage(
+                        "assets/images/profile1.png"
+                    ),
+                  )
+                ],
               ),
             ),
             Container(
@@ -43,20 +51,6 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Welcome back",
-                    style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  Text(
-                    "Sign In with your account",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey[500],
-                    ),
-                  ),
                   const SizedBox(height: 50,),
                   Container(
                     decoration: BoxDecoration(
@@ -73,6 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
+                          hintText: "Email here",
+                          prefixIcon: const Icon(
+                            Icons.email,
+                            color: Colors.lightBlueAccent,
+                          ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -109,6 +108,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
+                          hintText: "Password here",
+                          prefixIcon: const Icon(
+                            Icons.password,
+                            color: Colors.lightBlueAccent,
+                          ),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                               borderSide: const BorderSide(
@@ -129,19 +133,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20,),
-                  Row(
-                    children: [
-                      Expanded(child: Container(),),
-                      Text(
-                        "Forget your password?",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey[500],
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),
@@ -160,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: const Center(
                 child: Text(
-                  "Sign In",
+                  "Sign Up",
                   style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
@@ -172,22 +163,32 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: h * 0.12,),
             RichText(
               text: TextSpan(
-                  text: "Don't have an account?  ",
+                  text: "Sign Up using on of the following",
                   style: TextStyle(
                     color: Colors.grey[500],
                     fontSize: 20,
                   ),
-                  children: const [
-                    TextSpan(
-                      text: "Create One",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                      ),
-                    )
-                  ]
               ),
+            ),
+            Wrap(
+              children: List<Widget>.generate(
+                3,
+                  (index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blueGrey,
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage: AssetImage(
+                              "assets/images/" + images[index],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+              ) ,
             )
           ],
         ),

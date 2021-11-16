@@ -1,4 +1,6 @@
 import 'package:firebase_flutter_app/views/login_page.dart';
+import 'package:firebase_flutter_app/views/sign_up_page.dart';
+import 'package:firebase_flutter_app/views/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
